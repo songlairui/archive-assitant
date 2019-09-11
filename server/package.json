@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "execa": "^2.0.4",
+    "graphql-yoga": "1.2.0"
+  }
+}

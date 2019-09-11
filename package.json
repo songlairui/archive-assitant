@@ -1,0 +1,17 @@
+{
+  "name": "archive-assitant",
+  "version": "1.0.0",
+  "description": "This directory contains a simple fullstack example based on `graphql-yoga` and `create-react-app`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "server"
+  ]
+}
