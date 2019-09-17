@@ -12,6 +12,7 @@ const sampleItems = [
 ]
 
 const typeDefs = `
+  
   type Query {
     items: [Item!]!
     getPaths(fullpath:String!): String!
@@ -22,6 +23,8 @@ const typeDefs = `
     name: String!
     type: String
     ctime: String
+    atime: String
+    mtime: String
     remotes: [Remote]
     initGit: Boolean
   }
@@ -79,7 +82,9 @@ const resolvers = {
           initGit,
           type,
           remotes,
+          atime: stat.atime.toISOString(),
           ctime: stat.ctime.toISOString(),
+          mtime: stat.mtime.toISOString(),
         }
       }))
     }
