@@ -3,25 +3,27 @@ import { useLazyQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 const GET_PATHS = gql`
-  query getGreeting($fullPath: String!) {
-    getPaths(fullPath: $fullPath)
+  query getGreeting($fullpath: String!) {
+    getPaths(fullpath: $fullpath)
   }
 `;
 
-export default function({ mark = "fullPath", onChange }) {
-  const [fullPath, setfullPath] = useState(
-    localStorage.getItem(`__${mark}`) || "/"
-  );
+export default function({ mark = "fullpath", onChange }) {
+  const initial = localStorage.getItem(`__${mark}`) || "/";
+  const [fullpath, setfullpath] = useState(initial);
   const [launch, { called, loading, data = {} }] = useLazyQuery(GET_PATHS, {
     variables: {
-      fullPath
+      fullpath
     }
   });
 
   const snap = function(value) {
-    setfullPath(value);
+    setfullpath(value);
     localStorage.setItem(`__${mark}`, value);
   };
+  if (!called && initial !== "/") {
+    launch();
+  }
   if (called) {
     onChange && onChange(data.getPaths);
   }
@@ -32,7 +34,7 @@ export default function({ mark = "fullPath", onChange }) {
         <input
           type="text"
           onChange={e => snap(e.target.value)}
-          value={fullPath}
+          value={fullpath}
         />
         <button onClick={() => launch()}>GET PATH</button>
       </div>

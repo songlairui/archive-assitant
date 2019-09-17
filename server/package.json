@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "execa": "^2.0.4",
-    "graphql-yoga": "^1.18.3"
+    "graphql-yoga": "^1.18.3",
+    "simple-git": "^1.126.0"
   }
 }
